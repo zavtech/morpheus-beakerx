@@ -42,28 +42,34 @@ public class DataFrameDisplayer {
 
     /**
      * Registers a Jupyter Displayer to display a Morpheus DataFrame using BeakerX fancy tables.
-    */
+     */
+    @SuppressWarnings("unchecked")
     public static void register() {
-        Displayers.register(DataFrame.class, new Displayer<DataFrame>() {
-            @Override
-            @SuppressWarnings("unchecked")
-            public Map<String,String> display(DataFrame frame) {
-                final Format format = new SmartFormat();
-                final Stream<String> stream = frame.cols().keys().map(Object::toString);
-                final List<String> columns = stream.collect(Collectors.toList());
-                final TableDisplay display = new TableDisplay(
-                    frame.rowCount(),
-                    frame.colCount(),
-                    columns,
-                    (colIndex, rowIndex) -> {
-                        final Object value = frame.data().getValue(rowIndex, colIndex);
-                        return value == null ? null : format.format(value);
-                    }
-                );
-                display.display();
-                return OutputCell.DISPLAYER_HIDDEN;
-            }
-        });
+        try {
+            Class<DataFrame> type = (Class<DataFrame>)Class.forName("com.zavtech.morpheus.reference.XDataFrame");
+            Displayers.register(type, new Displayer<DataFrame>() {
+                @Override
+                @SuppressWarnings("unchecked")
+                public Map<String,String> display(DataFrame frame) {
+                    final Format format = new SmartFormat();
+                    final Stream<String> stream = frame.cols().keys().map(Object::toString);
+                    final List<String> columns = stream.collect(Collectors.toList());
+                    final TableDisplay display = new TableDisplay(
+                        frame.rowCount(),
+                        frame.colCount(),
+                        columns,
+                        (colIndex, rowIndex) -> {
+                            final Object value = frame.data().getValue(rowIndex, colIndex);
+                            return value == null ? null : format.format(value);
+                        }
+                    );
+                    display.display();
+                    return OutputCell.DISPLAYER_HIDDEN;
+                }
+            });
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
