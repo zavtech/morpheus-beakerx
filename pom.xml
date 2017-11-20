@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.zavtech</groupId>
   <artifactId>morpheus-beakerx</artifactId>
-  <version>0.7.0</version>
+  <version>0.7.1</version>
   <packaging>jar</packaging>
 
   <name>Morpheus-BeakerX</name>
@@ -67,7 +67,7 @@
     <dependency>
       <groupId>com.zavtech</groupId>
       <artifactId>morpheus-core</artifactId>
-      <version>0.9.16</version>
+      <version>0.9.17</version>
     </dependency>
 
     <dependency>
@@ -78,12 +78,23 @@
     </dependency>
 
     <dependency>
+      <groupId>com.zavtech</groupId>
+      <artifactId>morpheus-viz</artifactId>
+      <version>0.9.17</version>
+    </dependency>
+
+    <dependency>
       <groupId>com.github.twosigma</groupId>
       <artifactId>beakerx</artifactId>
       <version>0.7.0</version>
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>com.github.jupyter</groupId>
+      <artifactId>jvm-repr</artifactId>
+      <version>0.2.1</version>
+    </dependency>
   </dependencies>
 
 
