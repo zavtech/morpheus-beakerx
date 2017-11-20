@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.zavtech</groupId>
   <artifactId>morpheus-beakerx</artifactId>
-  <version>0.7.1</version>
+  <version>0.9.17</version>
   <packaging>jar</packaging>
 
   <name>Morpheus-BeakerX</name>
@@ -71,13 +71,6 @@
     </dependency>
 
     <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>6.8.7</version>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>com.zavtech</groupId>
       <artifactId>morpheus-viz</artifactId>
       <version>0.9.17</version>
@@ -94,7 +87,16 @@
       <groupId>com.github.jupyter</groupId>
       <artifactId>jvm-repr</artifactId>
       <version>0.2.1</version>
+      <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8.7</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
 
